@@ -1,0 +1,63 @@
+ <!DOCTYPE html>
+<head>
+   <link rel="stylesheet" href="pages.css">
+   <title>Era 2050AD</title>
+   <script src="https://kit.fontawesome.com/e7dfe44f3e.js" crossorigin="anonymous"></script>
+</head>
+<body class="indexpage">
+   <div class="index_main_cnt">
+       <i class="fa-solid fa-volume"></i>
+       <h1>Please make your browser fullscreen, enable sound permission and increase your volume to more than 35% for best experience :D</h1>
+       <br>
+       <button onclick="openvideo()" id="entergame" style="display: none;">Enter game</a>
+   </div>
+   <div class="fullscreen_btn_cnt">
+      <button class="fullscreen_btn" onclick="openFullscreen()">Toggle fullscreen <i class="fa-solid fa-up-right-and-down-left-from-center"></i></button>
+   </div>
+
+   <video id="intro_video" style="display:none;" width="100%">
+  <source src="trailer video/0311.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+   <!-- script for fullscreen toggle -->
+   <script>
+function openFullscreen() {
+  const elem = document.documentElement;
+
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { 
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { 
+    elem.msRequestFullscreen();
+  }
+}
+
+//detect full screen function
+document.addEventListener("fullscreenchange", function () {
+  const btn = document.getElementById("entergame");
+
+  if (document.fullscreenElement) {
+    btn.style.display = "block";  
+  } else {
+    btn.style.display = "none";    
+  }
+});
+
+window.onload = function(){
+  document.getElementById("intro_video").pause();
+}
+
+function openvideo(){
+  const video = document.getElementById("intro_video");
+
+  video.style.display = "block";
+  video.pause();        // ensure it isn't already playing
+  video.currentTime = 0;
+  video.play();
+}
+
+</script>
+</body>
+ </html>
