@@ -17,11 +17,18 @@
 
    <video id="intro_video" style="display:none;" width="100%">
   <source src="trailer video/0311.mp4" type="video/mp4">
-  Your browser does not support the video tag.
+  Your browser does not support this video.
 </video>
 
+<a class="startgame_a" id="startgame_a" href="instructions.html">
+   <div class="startgame" id="startgame">
+   <img src="trailer video/Logo image.png">
+   <p>Click anywhere to start</p>
+</div>
+</a>
+
    <!-- script for fullscreen toggle -->
-   <script>
+  <script>
 function openFullscreen() {
   const elem = document.documentElement;
 
@@ -46,18 +53,23 @@ document.addEventListener("fullscreenchange", function () {
 });
 
 window.onload = function(){
-  document.getElementById("intro_video").pause();
+  const video = document.getElementById("intro_video");
+  video.pause();
+
+  // detect when video ends
+  video.addEventListener("ended", function () {
+    document.getElementById("startgame_a").style.display = "block";
+  });
 }
 
 function openvideo(){
   const video = document.getElementById("intro_video");
 
   video.style.display = "block";
-  video.pause();        // ensure it isn't already playing
+  video.pause();
   video.currentTime = 0;
   video.play();
 }
-
 </script>
 </body>
  </html>

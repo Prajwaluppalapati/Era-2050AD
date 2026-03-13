@@ -74,3 +74,115 @@ video{
     position: fixed;
     display: none;
 }
+
+.startgame_a{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    display: none;
+}
+
+.startgame p{
+    color: white;
+    animation: glowText 2.5s ease-in-out infinite;
+}
+
+@keyframes glowText {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.startgame{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: rgb(0, 0, 0);
+    text-align: center;
+}
+
+.startgame img{
+    width: 710px;
+    margin-top: 17vh;
+}
+
+
+/* instructions page */
+.instructionspage{
+    background: rgb(0, 0, 0);
+    margin: 0;
+    height: 100vh;
+}
+
+.instructions_main_cnt{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    font-family: monospace;
+}
+
+.instructions_card{
+    width: 70%;
+    height: 70%;
+    border: 2px solid rgba(255,255,255,0.614);
+    border-radius: 20px;
+    color: white;
+    font-size: 18px;
+    padding: 2% 3%;
+    display: flex;
+    flex-direction: column;
+}
+
+.instructions_bottom{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top: auto;
+}
+
+.instructions_bottom_left{
+    width: 50%;
+    display: grid;
+}
+
+.instructions_bottom_left a{
+    text-decoration: none;
+    color: white;
+    border: 2px solid white;
+    padding: 1% 2%;
+    width: fit-content;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.instructions_bottom_left a:hover{
+    background: white;
+    color: black;
+}
+
+.instructions_bottom_right{
+    width: 50%;
+    text-align: right;
+}
+
+.instructions_bottom_right button{
+    padding: 1% 2%;
+    color: white;
+    background: none;
+    border: 2px solid white;
+    font-size: 18px;
+    font-family: monospace;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.instructions_bottom_right button:hover{
+    background: white;
+    color: black;
+}

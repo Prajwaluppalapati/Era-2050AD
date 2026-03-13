@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+  <head>
+      <title>Era 2050AD</title>
+      <link rel="stylesheet" href="pages.css">
+      <script src="https://kit.fontawesome.com/e7dfe44f3e.js" crossorigin="anonymous"></script>
+  </head>
+  <body class="instructionspage">
+     <div class="instructions_main_cnt">
+      <div class="instructions_card">
+        <p id="typeText"></p>
+        <div class="instructions_bottom">
+           <div class="instructions_bottom_left">
+             <a href="#">Skip</a>
+          </div>
+          <div class="instructions_bottom_right">
+             <button id="nextBtn" onclick="next()">Next</button>
+          </div>
+        </div>
+      </div>
+     </div>
+
+     <script>
+      const texts = [
+  "Hello this is a game you like!",
+  "Your mission is to survive the collapsing world. Hello this is a game you like! Hello this is a game you like! Hello this is a game you like!",
+  "Use strategy and speed to win.",
+  "Good luck."
+];
+
+let textIndex = 0;
+let charIndex = 0;
+
+const element = document.getElementById("typeText");
+const nextBtn = document.getElementById("nextBtn");
+
+function typeEffect() {
+  if (charIndex < texts[textIndex].length) {
+    element.textContent += texts[textIndex].charAt(charIndex);
+    charIndex++;
+    setTimeout(typeEffect, 40);
+  }
+}
+
+function showText() {
+  element.textContent = "";
+  charIndex = 0;
+  typeEffect();
+}
+
+nextBtn.addEventListener("click", () => {
+  textIndex++;
+
+  if (textIndex < texts.length) {
+    showText();
+  } else {
+    nextBtn.style.display = "none"; // hide when finished
+  }
+});
+
+showText();
+     </script>
+  </body>
+</html>
