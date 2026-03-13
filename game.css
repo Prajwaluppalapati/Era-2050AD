@@ -1,0 +1,52 @@
+/* Game main page */
+.gamepage{
+    background: rgb(9, 18, 28);
+    height: 100vh;
+    margin: 0;
+}
+
+.gamepage_main_cnt{
+    width: 98%;
+    padding: 1%;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.gamepage_main_cnt_top{
+    width: 98%;
+    display: flex;
+    flex-direction: row;
+    border: 2px solid rgba(0, 255, 255, 0.416);
+    border-radius: 20px;
+    padding: 1%;
+    gap: 1%;
+}
+
+.gamepage_top_left{
+    width: 50%;
+    height: 30px;
+    border-radius: 20px;
+    height: 99%;
+    background: rgba(0, 255, 255, 0.416);
+}
+
+.gamepage_top_middle{
+    height: fit-content;
+    width: 60%;
+}
+
+.gamepage_top_middle img{
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 20px;
+}
+
+.gamepage_top_right{
+    width: 50%;
+    height: 30px;
+    border-radius: 20px;
+    height: 99%;
+    background: rgba(0, 255, 255, 0.416);
+}
+

@@ -19,11 +19,16 @@
       </div>
      </div>
 
+<audio id="bgMusic" autoplay loop>
+  <source src="game-background-sound.mp3" type="audio/mpeg">
+</audio>
+
      <script>
-      const texts = [
-  "Hello this is a game you like!",
-  "Your mission is to survive the collapsing world. Hello this is a game you like! Hello this is a game you like! Hello this is a game you like!",
-  "Use strategy and speed to win.",
+      
+const texts = [
+  "Welcome to Era 2050AD, It's 2050 and the world is destroyed completely. Only few humans could survive and they all live inside a high tech base. And this game is all about controlling the base systems like controlling the base oxygen levels, conducting research inside the base, watch the CCTV cameras, contact aliens and lot more...",
+  "This game doesn't have any graphics. Instead of calling it a game, it's better to call it a simulation.",
+  "There is no winning or losing in this game and you can play with the base systems however you want.",
   "Good luck."
 ];
 
@@ -35,7 +40,7 @@ const nextBtn = document.getElementById("nextBtn");
 
 function typeEffect() {
   if (charIndex < texts[textIndex].length) {
-    element.textContent += texts[textIndex].charAt(charIndex);
+    element.textContent += texts[textIndex][charIndex];
     charIndex++;
     setTimeout(typeEffect, 40);
   }
@@ -48,13 +53,15 @@ function showText() {
 }
 
 nextBtn.addEventListener("click", () => {
-  textIndex++;
 
-  if (textIndex < texts.length) {
-    showText();
-  } else {
-    nextBtn.style.display = "none"; // hide when finished
+  // if last sentence → go to game page
+  if (textIndex === texts.length - 1) {
+    window.location.href = "game.html";
+    return;
   }
+
+  textIndex++;
+  showText();
 });
 
 showText();
