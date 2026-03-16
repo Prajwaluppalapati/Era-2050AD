@@ -151,8 +151,12 @@
 .atmosphere_main_cnt{
     width: 98%;
     padding: 1%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
+/* Top part */
 .atmosphere_top_cnt{
     border: 2px solid rgba(0, 255, 0, 0.667);
     box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.505);
@@ -202,3 +206,154 @@
     border-radius: 30px;
 }
 
+/* Bottom Part */
+
+.atmosphere_bottom_cnt{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.atmosphere_bottom_cnt a{
+    text-decoration: none;
+    font-family: monospace;
+    color: rgba(0, 255, 0, 0.667);
+    text-shadow: 0px 0px 5px rgb(0, 255, 0);
+    padding: 1% 2%;
+    border: 2px solid rgba(0, 255, 0, 0.667);
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 255, 0, 0.667);
+    transition: background 0.2s ease, color 0.2s ease;
+    text-align: center;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    font-size: 16px;
+}
+
+.atmosphere_bottom_cnt a:hover{
+    background: rgba(0, 255, 0, 0.667);
+    color: white;
+}
+
+/* Atmosphere
+   Oxygen control page 
+   atmosphere-oxygen.html
+*/
+
+/* Top part */
+.atmosphere_oxygenpage{
+    background: rgb(9, 18, 28);
+    margin: 0;
+    height: 100vh;
+}
+
+.atmosphere_oxygen_main_cnt{
+    width: 98%;
+    padding: 1%;
+}
+
+.atmosphere_oxygen_top{
+    border: 2px solid rgba(0, 255, 0, 0.667);
+    box-shadow: 0px 0px 5px rgba(0, 255, 0, 0.667);
+    border-radius: 20px;
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.atmosphere_oxygen_top div{
+   background: rgba(0, 255, 0, 0.667);
+   box-shadow: 0px 0px 5px rgba(0, 255, 0, 0.667);
+   padding: 1%;
+   padding-bottom: 0;
+   border-radius: 20px;
+   font-family: monospace;
+   color: white;
+   text-align: center;
+}
+
+.atmosphere_oxygen_top .percent_2{
+    font-size: 40px;
+    margin-top: -10px;
+}
+
+.atmosphere_oxygen_top #right_arrow{
+   color: rgba(255, 0, 0, 0.667);
+   text-shadow: 0px 0px 10px rgba(255, 0, 0, 0.747);
+   font-size: 60px;
+   margin-top: auto;
+   margin-bottom: auto;
+}
+
+.atmosphere_oxygen_top #plus{
+   color: rgba(38, 0, 255, 0.667);
+   text-shadow: 0px 0px 10px rgba(0, 60, 255, 0.747);
+   font-size: 60px;
+   margin-top: auto;
+   margin-bottom: auto;
+}
+
+.water{
+   width: 50%;
+}
+
+.hydrogen{
+    width: 50%;
+}
+
+.oxygen{
+    width: 50%;
+}
+
+/* Middle part */
+/* Slide switch style */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  border: 2px solid rgba(0, 255, 0, 0.813);
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 3.5px;
+  background-color: rgba(0, 255, 0, 0.813);
+  box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.667);
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: rgba(0, 255, 0, 0.813);
+  box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.667);
+}
+
+input:checked + .slider:before {
+    background-color: white;
+  transform: translateX(30px);
+}
