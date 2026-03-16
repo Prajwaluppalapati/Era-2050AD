@@ -251,6 +251,9 @@
 .atmosphere_oxygen_main_cnt{
     width: 98%;
     padding: 1%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .atmosphere_oxygen_top{
@@ -308,8 +311,27 @@
 }
 
 /* Middle part */
-/* Slide switch style */
+.atmosphere_oxygen_middle{
+    margin-top: 10px;
+    width: 98%;
+    padding: 1%;
+    padding-top: 0;
+    color: white;
+    font-family: monospace;
+    border-radius: 20px;
+    height: fit-content;
+    border-top: 2px solid rgba(0, 255, 0, 0.667);
+    box-shadow: 0px -10px 10px rgba(0, 255, 0, 0.429);
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    place-items: center;
+}
 
+.switch_cnt{
+    text-align: center;
+}
+
+/* Slide switch style */
 .switch {
   position: relative;
   display: inline-block;
@@ -326,7 +348,7 @@
 .slider {
   position: absolute;
   cursor: pointer;
-  border: 2px solid rgba(0, 255, 0, 0.813);
+  border: 2px solid rgba(255, 0, 0, 0.813);
   border-radius: 34px;
   top: 0;
   left: 0;
@@ -341,19 +363,58 @@
   height: 20px;
   width: 20px;
   left: 4px;
-  bottom: 3.5px;
-  background-color: rgba(0, 255, 0, 0.813);
-  box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.667);
+  bottom: 3px;
+  background-color: rgba(255, 0, 0, 0.813);
+  box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.667);
   border-radius: 50%;
   transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: rgba(0, 255, 0, 0.813);
   box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.667);
+  border: 2px solid rgba(0, 255, 0, 0.667);
 }
 
 input:checked + .slider:before {
-    background-color: white;
+  box-shadow: 0px 0px 10px rgba(34, 255, 0, 0.667);
+  background-color: rgba(0, 255, 0, 0.667);
   transform: translateX(30px);
+}
+
+/* Style for range */
+.atmosphere_oxygen_bottom{
+    width: 98%;
+    padding: 1%;
+    height: 200px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    place-items: center;
+     border-bottom: 2px solid rgba(0, 255, 0, 0.667);
+    box-shadow: 0px 150px 20px rgba(0, 255, 0, 0.429);
+    border-radius: 20px;
+}
+
+.power_range_vertical{
+    width: 150px;   
+    height: 20px;
+    appearance: none;
+    transform: rotate(-90deg);
+    cursor: pointer;
+    background: none;
+}
+
+.power_range_vertical::-webkit-slider-runnable-track{
+    height: 20px;
+    background: rgba(0, 255, 0, 0.276);
+    border-radius: 10px;
+}
+
+.power_range_vertical::-webkit-slider-thumb{
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 10px;
+    background: rgb(0, 192, 0);
+    box-shadow: 0 0 10px rgba(0,255,0,0.9);
+    margin-top: -4px;
 }
