@@ -19,7 +19,8 @@
     width: 98%;
     display: flex;
     flex-direction: row;
-    border: 2px solid rgba(0, 255, 255, 0.416);
+    border: 2px solid rgba(0, 255, 0, 0.667);
+    box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.505);
     border-radius: 20px;
     padding: 1%;
     gap: 1%;
@@ -29,7 +30,8 @@
     width: 50%;
     border-radius: 20px;
     height: 90%;
-    background: rgba(0, 255, 255, 0.416);
+    background: rgba(0, 255, 0, 0.667);
+    box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.671);
     padding: 1%;
 }
 
@@ -55,9 +57,10 @@
 }
 
 .gamepage_top_left_bottom a{
-    padding: 11% 10%;
+    padding: 8% 10%;
     border-radius: 20px;
-    background: rgb(0, 66, 66);
+    background: rgba(0, 255, 0, 0.322);
+    border: 2px solid rgba(0, 255, 0, 0.667);
     text-align: center;
     text-decoration: none;
     color: white;
@@ -67,7 +70,7 @@
 }
 
 .gamepage_top_left_bottom a:hover{
-    background: rgb(0, 44, 44);
+    background: rgb(3, 164, 0);
 }
 
 .gamepage_top_middle{
@@ -77,21 +80,125 @@
 
 .gamepage_top_middle img{
     width: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(55, 255, 0, 0.829);
     border-radius: 20px;
+    filter: sepia(100%) saturate(500%) hue-rotate(90deg);
 }
 
-.gamepage_top_right{
+.gamepage_top_right{ 
     width: 50%;
     border-radius: 20px;
     padding: 1%;
     height: 90%;
-    background: rgba(0, 255, 255, 0.416);
+    background: rgba(0, 255, 0, 0.667);
+    box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.671);
 }
 
 #gamepage_top_right_bottom a{
-    padding: 11% 3%;
+    padding: 8% 3%;
 }
 
 /* game page bottom part */
+.gamepage_main_cnt_bottom{
+   padding: 2% 0%;
+   display: grid;
+   grid-template-columns: repeat(5, 1fr);
+   gap: 10px;
+}
+
+.gamepage_main_cnt_bottom a{
+    padding: 10px 20px;
+    text-decoration: none;
+    font-family: monospace;
+    border: 2px solid rgba(0, 255, 0, 0.667);
+    box-shadow: 0px 0px 5px rgba(0, 255, 0, 0.667);
+    border-radius: 10px;
+    color: rgba(0, 255, 0, 0.667);
+    text-shadow: 0px 0px 5px rgb(0, 255, 0);
+    transition: background 0.2s ease, color 0.2s ease;
+    text-align: center;
+    font-size: 16px;
+}
+
+.gamepage_main_cnt_bottom a:hover{
+    background: rgb(0, 218, 0);
+    color: white;
+}
+
+#emergency_button{
+    color: rgba(255, 0, 0, 0.667);
+    text-shadow: 0px 0px 5px rgba(255, 0, 0, 0.667);
+    border: 2px solid rgba(255, 0, 0, 0.667);
+    box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.877);
+}
+
+#emergency_button:hover{
+    background: rgb(218, 0, 0);
+    color: white;
+}
+
+/* CCTV page */
+/*-----------------------------------------------*/
+
+/* atmosphere control page - atmosphere.html */
+
+.atmospherepage{
+    background: rgb(9, 18, 28);
+    margin: 0;
+    height: 100vh;
+}
+
+.atmosphere_main_cnt{
+    width: 98%;
+    padding: 1%;
+}
+
+.atmosphere_top_cnt{
+    border: 2px solid rgba(0, 255, 0, 0.667);
+    box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.505);
+    padding: 1%;
+    color: white;
+    font-family: monospace;
+    border-radius: 20px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.atmosphere_top_cards{
+   background: rgba(0, 255, 0, 0.667);
+   padding: 1% 2%;
+   padding-bottom: 4%;
+   display: grid;
+   place-items: center;
+   border-radius: 20px;
+   height: fit-content;
+   box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.505);
+}
+
+.percent_1{
+    font-size: 40px;
+    margin-top: -10px;
+}
+
+.atmosphere_top_cards .stability{
+    height: fit-content;
+    padding: 0px 20px;
+    background: rgb(6, 0, 50);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-size: 10px;
+    margin-top: -30px;
+}
+
+.stability div{
+    width: 10px;
+    height: 10px;
+    background: rgb(0, 255, 0);
+    margin-bottom: auto;
+    margin-top: auto;
+    border-radius: 30px;
+}
 
