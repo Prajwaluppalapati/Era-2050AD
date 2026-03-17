@@ -27,70 +27,153 @@
         <div class="switch_cnt">
                <p>Power</p>
                <label class="switch">
-               <input type="checkbox" id="oxygenSwitch">
+               <input type="checkbox" id="powerSwitch" checked>
                <span class="slider"></span>
                </label>
         </div>
         <div class="switch_cnt">
                <p>Oxygen Release</p>
                <label class="switch">
-               <input type="checkbox" id="oxygenSwitch">
+               <input type="checkbox" id="oxygenReleaseSwitch" checked>
                <span class="slider"></span>
                </label>
         </div>
         <div class="switch_cnt">
                <p>Oxygen Storage</p>
                <label class="switch">
-               <input type="checkbox" id="oxygenSwitch">
+               <input type="checkbox" id="oxygenStorageSwitch" checked>
                <span class="slider"></span>
                </label>
         </div>
         <div class="switch_cnt">
                <p>Storage Release</p>
                <label class="switch">
-               <input type="checkbox" id="oxygenSwitch">
+               <input type="checkbox" id="storageReleaseSwitch">
                <span class="slider"></span>
                </label>
         </div>
         <div class="switch_cnt">
                <p>Hydrogen Storage</p>
                <label class="switch">
-               <input type="checkbox" id="oxygenSwitch">
+               <input type="checkbox" id="hydrogenStorageSwitch" checked>
                <span class="slider"></span>
                </label>
         </div>
         <div class="switch_cnt">
                <p>Hydrogen Release</p>
                <label class="switch">
-               <input type="checkbox" id="oxygenSwitch">
+               <input type="checkbox" id="hydrogenReleaseSwitch" checked>
                <span class="slider"></span>
                </label>
         </div>
         <div class="switch_cnt">
                <p>Temp control</p>
                <label class="switch">
-               <input type="checkbox" id="oxygenSwitch">
+               <input type="checkbox" id="tempControlSwitch" checked>
                <span class="slider"></span>
                </label>
         </div>
         <div class="switch_cnt">
                <p>Automatic mode</p>
                <label class="switch">
-               <input type="checkbox" id="oxygenSwitch">
+               <input type="checkbox" id="oxygenSwitch" checked>
                <span class="slider"></span>
                </label>
         </div>
      </div>
      <div class="atmosphere_oxygen_bottom">
-        <input type="range" min="0" max="100" value="50" class="power_range_vertical">
-        <input type="range" min="0" max="100" value="50" class="power_range_vertical">
-        <input type="range" min="0" max="100" value="50" class="power_range_vertical">
-        <input type="range" min="0" max="100" value="50" class="power_range_vertical">
-        <input type="range" min="0" max="100" value="50" class="power_range_vertical">
-        <input type="range" min="0" max="100" value="50" class="power_range_vertical">
-        <input type="range" min="0" max="100" value="50" class="power_range_vertical">
-        <input type="range" min="0" max="100" value="50" class="power_range_vertical">
+        <input id="r1" type="range" min="0" max="100" value="60" class="power_range_vertical">
+        <input id="r2" type="range" min="0" max="100" value="50" class="power_range_vertical">
+        <input id="r3" type="range" min="0" max="100" value="50" class="power_range_vertical">
+        <input id="r4" type="range" min="0" max="100" value="0" class="power_range_vertical">
+        <input id="r5" type="range" min="0" max="100" value="90" class="power_range_vertical">
+        <input id="r6" type="range" min="0" max="100" value="10" class="power_range_vertical">
+        <input id="r7" type="range" min="0" max="100" value="100" class="power_range_vertical">
      </div>
    </div>
+
+   <!-- Script for switch and range control -->
+    <script>
+const switches = [
+  "powerSwitch",
+  "oxygenReleaseSwitch",
+  "oxygenStorageSwitch",
+  "storageReleaseSwitch",
+  "hydrogenStorageSwitch",
+  "hydrogenReleaseSwitch",
+  "tempControlSwitch"
+];
+
+const ranges = [
+  "r1","r2","r3","r4","r5","r6","r7"
+];
+
+switches.forEach((id, index) => {
+  const sw = document.getElementById(id);
+  const range = document.getElementById(ranges[index]);
+
+  function updateRange() {
+    if (sw.checked) {
+      // ON → enable
+      range.style.opacity = "1";
+      range.style.filter = "none";
+      range.disabled = false;
+      range.style.cursor = "pointer";
+    } else {
+      // OFF → disable
+      range.style.opacity = "0.3";
+      range.style.filter = "grayscale(100%)";
+      range.disabled = true;              
+      range.style.cursor = "not-allowed"; 
+    }
+  }
+
+  // Initial state
+  updateRange();
+
+  // On change
+  sw.addEventListener("change", updateRange);
+});
+</script>
+
+
+<!-- Code for automatic mode -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const ranges = ["r1","r2","r3","r4","r5","r6","r7"];
+
+  // ✅ Always get original default from HTML
+  const defaultValues = ranges.map(id => {
+    const el = document.getElementById(id);
+    return el ? el.defaultValue : 0;
+  });
+
+  const autoSwitch = document.getElementById("oxygenSwitch");
+
+  if (!autoSwitch) return; // safety
+
+  autoSwitch.addEventListener("change", function() {
+
+    if (this.checked) {
+      ranges.forEach((id, index) => {
+        const range = document.getElementById(id);
+        if (!range) return;
+
+        // reset to default
+        range.value = defaultValues[index];
+
+        // 🔥 optional visual effect (quick flash)
+        range.style.boxShadow = "0 0 10px rgba(0,255,0,0.8)";
+        setTimeout(() => {
+          range.style.boxShadow = "";
+        }, 300);
+      });
+    }
+
+  });
+
+});
+</script>
 </body>
 </html>
