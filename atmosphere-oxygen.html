@@ -20,8 +20,8 @@
             <p>Hydrogen (H₂)</p>
             <p id="hydrogen_number" class="percent_2"></p>
              <div class="cards_bottom">
-                <p id="current_indication">Storage: 3000L</p>
-                <p id="temperature_indication">Release: 100L</p>
+                <p id="hydrogen_storage">Stored: 50,000 gal/h</p>
+                <p id="hydrogen_release" style="color: red;">Released: -1000 gal/h</p>
             </div>
         </div>
         <i id="plus" class="fa-solid fa-plus"></i>
@@ -29,8 +29,8 @@
             <p>Oxygen (O₂)</p>
             <p id="oxygen_number" class="percent_2"></p>
              <div class="cards_bottom">
-                <p id="current_indication">Storage: 500L</p>
-                <p id="temperature_indication">Release: 2500L</p>
+                <p id="oxygen_storage">Stored: 10,000 gal/h</p>
+                <p id="oxygen_release" style="color: red;">Released: -80,000 gal/h</p>
             </div>
         </div>
      </div>
@@ -95,7 +95,7 @@
      </div>
      <div class="atmosphere_oxygen_bottom">
         <input id="r1" type="range" min="0" max="1000" value="600" class="power_range_vertical">
-        <input id="r2" type="range" min="0" max="100" value="60" class="power_range_vertical">
+        <input id="r2" type="range" min="100" max="1000" value="600" class="power_range_vertical">
         <input id="r3" type="range" min="0" max="100" value="20" class="power_range_vertical">
         <input id="r4" type="range" min="0" max="100" value="80" class="power_range_vertical">
         <input id="r5" type="range" min="0" max="100" value="90" class="power_range_vertical">
@@ -193,61 +193,32 @@ powerSwitch.addEventListener("change", () => {
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-  const ranges = ["r1","r2","r3","r4","r5","r6","r7"];
-
-  const defaultValues = ranges.map(id => {
-    const el = document.getElementById(id);
-    return el ? el.defaultValue : 0;
-  });
-
-  const autoSwitch = document.getElementById("oxygenSwitch");
-
-  if (!autoSwitch) return;
-
-  // AUTO MODE RESET LOGIC
-  autoSwitch.addEventListener("change", function() {
-
-    if (this.checked) {
-      ranges.forEach((id, index) => {
-        const range = document.getElementById(id);
-        if (!range) return;2
-
-        range.value = defaultValues[index];
-
-        // optional glow
-        range.style.boxShadow = "0 0 10px rgba(0,255,0,0.8)";
-        setTimeout(() => {
-          range.style.boxShadow = "";
-        }, 300);
-      });
-    }
-
-  });
-
-  ranges.forEach(id => {
-    const range = document.getElementById(id);
-    if (!range) return;
-
-    range.addEventListener("input", () => {
-      if (autoSwitch.checked) {
-        autoSwitch.checked = false;
-        autoSwitch.dispatchEvent(new Event("change"));
-      }
-    });
-  });
-
-});
-</script>
-
-<!-- Controlling of the values -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-
-  // increasing numbers
+  // TEXT ELEMENTS
   const waterText = document.getElementById("water_number"); 
   const hydrogenText = document.getElementById("hydrogen_number");
   const oxygenText = document.getElementById("oxygen_number");
 
+  // RANGES
+  const r1 = document.getElementById("r1"); // power
+  const r2 = document.getElementById("r2"); // water
+  const r3 = document.getElementById("r3");
+  const r4 = document.getElementById("r4");
+  const r5 = document.getElementById("r5");
+  const r6 = document.getElementById("r6");
+  const r7 = document.getElementById("r7"); // temperature
+
+  const ranges = [r1, r2, r3, r4, r5, r6, r7];
+
+  const current_power = document.getElementById("current_indication");
+  const temperatureText = document.getElementById("temperature_indication");
+
+  const powerSwitch = document.getElementById("powerSwitch");
+  const autoSwitch = document.getElementById("oxygenSwitch");
+
+  // DEFAULT VALUES (for auto mode)
+  const defaultValues = ranges.map(r => r.defaultValue);
+
+  // VALUES
   let value = 1000;
   let value1 = 400; 
   let value2 = 600;
@@ -258,14 +229,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (intervalId) return;
 
     intervalId = setInterval(() => {
-      value += 100;
-      waterText.textContent = value + " gal";
 
-      value1 += 50;
-      hydrogenText.textContent = value1 + " gal";
+      let waterIncrease = Number(r2.value);
 
-      value2 += 50;
-      oxygenText.textContent = value2 + " gal";
+      value += waterIncrease;
+      value1 += waterIncrease / 2;
+      value2 += waterIncrease / 2;
+
+      waterText.textContent = Math.floor(value) + " gal";
+      hydrogenText.textContent = Math.floor(value1) + " gal";
+      oxygenText.textContent = Math.floor(value2) + " gal";
+
     }, 1000);
   }
 
@@ -274,35 +248,57 @@ document.addEventListener("DOMContentLoaded", () => {
     intervalId = null;
   }
 
-  // power switch
-  const powerSwitch = document.getElementById("powerSwitch");
-
-  // Range input  
-  const r1 = document.getElementById("r1");
-  const current_power = document.getElementById("current_indication");
-
   function updatePower() {
     if (powerSwitch.checked) {
       current_power.textContent = "Power: " + r1.value + "V";
     } else {
-      current_power.textContent = "Power: 0V"; 
+      current_power.textContent = "Power: 0V";
     }
   }
 
-  // initial state
+  function updateTemperature() {
+    temperatureText.textContent = "Temperature: " + r7.value + "°C";
+  }
+
+  autoSwitch.addEventListener("change", () => {
+
+    if (autoSwitch.checked) {
+      ranges.forEach((range, i) => {
+        range.value = defaultValues[i];
+
+        // glow effect
+        range.style.boxShadow = "0 0 10px rgba(0,255,0,0.8)";
+        setTimeout(() => range.style.boxShadow = "", 300);
+
+        // trigger updates
+        range.dispatchEvent(new Event("input"));
+      });
+    }
+
+  });
+
+  // disable auto when user moves any slider
+  ranges.forEach(range => {
+    range.addEventListener("input", () => {
+      if (autoSwitch.checked) {
+        autoSwitch.checked = false;
+      }
+    });
+  });
+
   if (powerSwitch.checked) startFlow();
   updatePower();
+  updateTemperature();
 
   powerSwitch.addEventListener("change", () => {
-    if (powerSwitch.checked) {
-      startFlow();
-    } else {
-      stopFlow();
-    }
-    updatePower(); 
+    if (powerSwitch.checked) startFlow();
+    else stopFlow();
+
+    updatePower();
   });
 
   r1.addEventListener("input", updatePower);
+  r7.addEventListener("input", updateTemperature);
 
 });
     </script>

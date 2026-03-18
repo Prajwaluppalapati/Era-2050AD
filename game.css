@@ -424,6 +424,16 @@ input:checked + .slider:before {
     border-radius: 10px;
 }
 
+#r3::-webkit-slider-runnable-track, #r4::-webkit-slider-runnable-track, #r5::-webkit-slider-runnable-track, #r6::-webkit-slider-runnable-track{
+    background: rgba(255, 0, 0, 0.276);
+    cursor: not-allowed;
+}
+
+#r3::-webkit-slider-thumb, #r4::-webkit-slider-thumb, #r5::-webkit-slider-thumb, #r6::-webkit-slider-thumb{
+    background: rgb(192, 0, 0);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.9);
+}
+
 .power_range_vertical::-webkit-slider-thumb{
     appearance: none;
     width: 28px;
@@ -443,3 +453,29 @@ input:checked + .slider:before {
     box-shadow: none;
     background: gray;
 }
+
+/* Atmosphere
+   Radiation shielding page
+   atmosphere-radiation.html
+*/
+
+.atmosphere_radiationpage{
+    background: rgb(9, 18, 28);
+    margin: 0;
+    height: 100vh;
+}
+
+.atmosphere_radiation_main_cnt{
+    width: 98%;
+    padding: 1%;
+}
+
+.atmosphere_radiation_main_cnt h1{
+    color: rgb(0, 255, 0);
+    font-family: monospace;
+    font-weight: 1500;
+    font-size: 50px;
+    text-align: center;
+    text-shadow: 0px 0px 10px rgba(0, 255, 0, 0.783);
+}
+
