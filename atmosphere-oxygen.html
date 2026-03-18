@@ -9,17 +9,29 @@
      <div class="atmosphere_oxygen_top">
         <div class="water">
             <p>Water (H₂O)</p>
-            <p class="percent_2">1000 L/h</p>
+            <p id="water_number" class="percent_2"></p>
+            <div class="cards_bottom">
+                <p id="current_indication"></p>
+                <p id="temperature_indication"></p>
+            </div>
         </div>
         <i id="right_arrow" class="fa-solid fa-right-long"></i>
         <div class="hydrogen">
             <p>Hydrogen (H₂)</p>
-            <p class="percent_2">600 L/h</p>
+            <p id="hydrogen_number" class="percent_2"></p>
+             <div class="cards_bottom">
+                <p id="current_indication">Storage: 3000L</p>
+                <p id="temperature_indication">Release: 100L</p>
+            </div>
         </div>
         <i id="plus" class="fa-solid fa-plus"></i>
         <div class="oxygen">
             <p>Oxygen (O₂)</p>
-            <p class="percent_2">400 L/h</p>
+            <p id="oxygen_number" class="percent_2"></p>
+             <div class="cards_bottom">
+                <p id="current_indication">Storage: 500L</p>
+                <p id="temperature_indication">Release: 2500L</p>
+            </div>
         </div>
      </div>
 
@@ -134,6 +146,21 @@ switches.forEach((id, index) => {
   // On change
   sw.addEventListener("change", updateRange);
 });
+
+const storageSwitch = document.getElementById("storageReleaseSwitch");
+const r4 = document.getElementById("r4");
+
+if (storageSwitch && r4) {
+
+  storageSwitch.addEventListener("change", () => {
+
+    if (!storageSwitch.checked) {  // OFF state
+      r4.value = 0;
+    }
+
+  });
+
+}
 </script>
 
 
@@ -143,7 +170,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const ranges = ["r1","r2","r3","r4","r5","r6","r7"];
 
-  // ✅ Always get original default from HTML
   const defaultValues = ranges.map(id => {
     const el = document.getElementById(id);
     return el ? el.defaultValue : 0;
@@ -151,8 +177,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const autoSwitch = document.getElementById("oxygenSwitch");
 
-  if (!autoSwitch) return; // safety
+  if (!autoSwitch) return;
 
+  // 🔹 AUTO MODE RESET LOGIC
   autoSwitch.addEventListener("change", function() {
 
     if (this.checked) {
@@ -160,10 +187,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const range = document.getElementById(id);
         if (!range) return;
 
-        // reset to default
         range.value = defaultValues[index];
 
-        // 🔥 optional visual effect (quick flash)
+        // optional glow
         range.style.boxShadow = "0 0 10px rgba(0,255,0,0.8)";
         setTimeout(() => {
           range.style.boxShadow = "";
@@ -173,7 +199,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
   });
 
+  ranges.forEach(id => {
+    const range = document.getElementById(id);
+    if (!range) return;
+
+    range.addEventListener("input", () => {
+      if (autoSwitch.checked) {
+        autoSwitch.checked = false;
+        autoSwitch.dispatchEvent(new Event("change"));
+      }
+    });
+  });
+
 });
 </script>
+
+<!-- Most important logic: for the working of the slide switches and ranges and getting real outputs -->
+<script>
+    //water
+    const waterText = document.getElementById("water_number"); 
+    const hydrogenText = document.getElementById("hydrogen_number");
+    const oxygenText = document.getElementById("oxygen_number");
+    let value = 1000;
+    let value1 = 400; 
+    let value2 = 600;
+
+    setInterval(() => {
+        value += 100;
+        waterText.textContent = value + "L";
+        value1 += 100;
+        hydrogenText.textContent = value1 + "L";
+        value2 += 100;
+        oxygenText.textContent = value2 + "L";
+    }, 1000)
+</script>
+
 </body>
 </html>
