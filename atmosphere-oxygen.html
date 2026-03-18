@@ -44,9 +44,9 @@
                </label>
         </div>
         <div class="switch_cnt">
-               <p>Oxygen Release</p>
+               <p>Water Supply</p>
                <label class="switch">
-               <input type="checkbox" id="oxygenReleaseSwitch" checked>
+               <input type="checkbox" id="waterSupplySwitch" checked>
                <span class="slider"></span>
                </label>
         </div>
@@ -58,9 +58,9 @@
                </label>
         </div>
         <div class="switch_cnt">
-               <p>Storage Release</p>
+               <p>Oxygen Release</p>
                <label class="switch">
-               <input type="checkbox" id="storageReleaseSwitch">
+               <input type="checkbox" id="oxygenReleaseSwitch" checked>
                <span class="slider"></span>
                </label>
         </div>
@@ -94,13 +94,13 @@
         </div>
      </div>
      <div class="atmosphere_oxygen_bottom">
-        <input id="r1" type="range" min="0" max="100" value="60" class="power_range_vertical">
-        <input id="r2" type="range" min="0" max="100" value="50" class="power_range_vertical">
-        <input id="r3" type="range" min="0" max="100" value="50" class="power_range_vertical">
-        <input id="r4" type="range" min="0" max="100" value="0" class="power_range_vertical">
+        <input id="r1" type="range" min="0" max="1000" value="600" class="power_range_vertical">
+        <input id="r2" type="range" min="0" max="100" value="60" class="power_range_vertical">
+        <input id="r3" type="range" min="0" max="100" value="20" class="power_range_vertical">
+        <input id="r4" type="range" min="0" max="100" value="80" class="power_range_vertical">
         <input id="r5" type="range" min="0" max="100" value="90" class="power_range_vertical">
         <input id="r6" type="range" min="0" max="100" value="10" class="power_range_vertical">
-        <input id="r7" type="range" min="0" max="100" value="100" class="power_range_vertical">
+        <input id="r7" type="range" min="0" max="100" value="26" class="power_range_vertical">
      </div>
    </div>
 
@@ -108,9 +108,9 @@
     <script>
 const switches = [
   "powerSwitch",
-  "oxygenReleaseSwitch",
+  "waterSupplySwitch",
   "oxygenStorageSwitch",
-  "storageReleaseSwitch",
+  "oxygenReleaseSwitch",
   "hydrogenStorageSwitch",
   "hydrogenReleaseSwitch",
   "tempControlSwitch"
@@ -161,10 +161,35 @@ if (storageSwitch && r4) {
   });
 
 }
+
+const powerSwitch = document.getElementById("powerSwitch");
+
+const otherSwitches = [
+  "waterSupplySwitch",
+  "oxygenStorageSwitch",
+  "oxygenReleaseSwitch",
+  "hydrogenStorageSwitch",
+  "hydrogenReleaseSwitch",
+  "tempControlSwitch",
+  "oxygenSwitch"
+];
+
+powerSwitch.addEventListener("change", () => {
+
+  otherSwitches.forEach(id => {
+    const sw = document.getElementById(id);
+
+    if (sw) {
+      sw.checked = powerSwitch.checked;
+      sw.dispatchEvent(new Event("change"));
+    }
+  });
+
+});
 </script>
 
 
-<!-- Code for automatic mode -->
+<!-- Code for automatic mode and power off mode -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -179,13 +204,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!autoSwitch) return;
 
-  // 🔹 AUTO MODE RESET LOGIC
+  // AUTO MODE RESET LOGIC
   autoSwitch.addEventListener("change", function() {
 
     if (this.checked) {
       ranges.forEach((id, index) => {
         const range = document.getElementById(id);
-        if (!range) return;
+        if (!range) return;2
 
         range.value = defaultValues[index];
 
@@ -216,32 +241,70 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <!-- Controlling of the values -->
 <script>
-    //increasing numbers
-    const waterText = document.getElementById("water_number"); 
-    const hydrogenText = document.getElementById("hydrogen_number");
-    const oxygenText = document.getElementById("oxygen_number");
-    let value = 1000;
-    let value1 = 400; 
-    let value2 = 600;
+document.addEventListener("DOMContentLoaded", () => {
 
-    setInterval(() => {
-        value += 100;
-        waterText.textContent = value + "L";
-        value1 += 50;
-        hydrogenText.textContent = value1 + "L";
-        value2 += 50;
-        oxygenText.textContent = value2 + "L";
-    }, 1000)
+  // increasing numbers
+  const waterText = document.getElementById("water_number"); 
+  const hydrogenText = document.getElementById("hydrogen_number");
+  const oxygenText = document.getElementById("oxygen_number");
 
-    //Range input  
-    const r1 = document.getElementById("r1");
-    const current_power = document.getElementById("current_indication");
+  let value = 1000;
+  let value1 = 400; 
+  let value2 = 600;
 
-    current_power.textContent = r1.value + "A";
-    
-    r1.addEventListener("input", () => {
-        current_power.textContent = r1.value + "A";
-    });
+  let intervalId = null;
+
+  function startFlow() {
+    if (intervalId) return;
+
+    intervalId = setInterval(() => {
+      value += 100;
+      waterText.textContent = value + " gal";
+
+      value1 += 50;
+      hydrogenText.textContent = value1 + " gal";
+
+      value2 += 50;
+      oxygenText.textContent = value2 + " gal";
+    }, 1000);
+  }
+
+  function stopFlow() {
+    clearInterval(intervalId);
+    intervalId = null;
+  }
+
+  // power switch
+  const powerSwitch = document.getElementById("powerSwitch");
+
+  // Range input  
+  const r1 = document.getElementById("r1");
+  const current_power = document.getElementById("current_indication");
+
+  function updatePower() {
+    if (powerSwitch.checked) {
+      current_power.textContent = "Power: " + r1.value + "V";
+    } else {
+      current_power.textContent = "Power: 0V"; 
+    }
+  }
+
+  // initial state
+  if (powerSwitch.checked) startFlow();
+  updatePower();
+
+  powerSwitch.addEventListener("change", () => {
+    if (powerSwitch.checked) {
+      startFlow();
+    } else {
+      stopFlow();
+    }
+    updatePower(); 
+  });
+
+  r1.addEventListener("input", updatePower);
+
+});
     </script>
 </body>
 </html>
