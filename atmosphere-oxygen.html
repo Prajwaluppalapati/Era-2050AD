@@ -214,9 +214,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-<!-- Most important logic: for the working of the slide switches and ranges and getting real outputs -->
+<!-- Controlling of the values -->
 <script>
-    //water
+    //increasing numbers
     const waterText = document.getElementById("water_number"); 
     const hydrogenText = document.getElementById("hydrogen_number");
     const oxygenText = document.getElementById("oxygen_number");
@@ -227,12 +227,21 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(() => {
         value += 100;
         waterText.textContent = value + "L";
-        value1 += 100;
+        value1 += 50;
         hydrogenText.textContent = value1 + "L";
-        value2 += 100;
+        value2 += 50;
         oxygenText.textContent = value2 + "L";
     }, 1000)
-</script>
 
+    //Range input  
+    const r1 = document.getElementById("r1");
+    const current_power = document.getElementById("current_indication");
+
+    current_power.textContent = r1.value + "A";
+    
+    r1.addEventListener("input", () => {
+        current_power.textContent = r1.value + "A";
+    });
+    </script>
 </body>
 </html>
