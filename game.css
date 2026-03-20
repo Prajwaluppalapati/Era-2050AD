@@ -584,3 +584,72 @@ input:checked + .slider:before {
     text-shadow: 0px 0px 20px rgba(0, 255, 0, 0.582);
     margin-top: -80px;
 }
+
+.radiation_left_cnt{
+    border: 2px solid rgb(0, 164, 0);
+    box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.559);
+    border-radius: 20px;
+    margin-left: -900px;
+    margin-top: -110px;
+    width: 280px;
+    height: 460px;
+    position: fixed;
+    padding: 1%;
+}
+
+.radiation_right_cnt{
+    border: 2px solid rgb(0, 164, 0);
+    box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.559);
+    border-radius: 20px;
+    margin-top: -110px;
+    margin-left: 900px;
+    width: 300px;
+    height: 480px;
+    position: fixed;
+}
+
+/* battery design */
+
+.radiation_left_bottom_cnt{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.radiation_battery{
+   width: 100px;
+   height: 200px;
+   border: 2px solid rgba(255, 255, 255, 0.717);
+   border-radius: 20px;
+   padding: 4%;
+   display: flex;
+   align-items: last baseline;
+}
+
+.radiation_battery div{
+    width: 100%;
+    height: 45px;
+    background: rgb(255, 0, 0);
+    box-shadow: 0px 0px 10px red;
+    border-radius: 8px;
+}
+
+.radiation_battery_backup{
+    width: 100px;
+    height: 200px;
+    border: 2px solid rgba(255, 255, 255, 0.717);
+    border-radius: 20px;
+    padding: 4%;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    align-items: last baseline;
+}
+
+.radiation_battery_backup div{
+    width: 100%;
+    height: 50px;
+    background: rgb(4, 255, 0);
+    box-shadow: 0px 0px 10px rgb(0, 255, 4);
+    border-radius: 8px;
+}
