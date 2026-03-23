@@ -13,73 +13,14 @@
 .index_main_cnt{
     width: 100%;
     text-align: center;
-}
-
-.index_main_cnt i{
-    font-size: 130px;
-}
-
-.index_main_cnt h1{
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.index_main_cnt button{
-    padding: 1% 3%;
-    text-decoration: none;
-    color: white;
-    border: 2px solid white;
-    font-size: 20px;
-    font-weight: bold;
-    transition: background 0.3s ease, color 0.3s ease;
-    width: 15%;
-    margin-left: auto;
-    margin-right: auto;
-    background: none;
-    cursor: pointer;
-}
-
-.index_main_cnt button:hover{
-    color: black;
-    background: white;
-}
-
-.fullscreen_btn_cnt{
-    position: fixed;
-    margin-top: 92vh;
-    margin-left: 88vw;
-    width: fit-content;
-}
-
-.fullscreen_btn{
-    background: rgb(104, 104, 255);
-    border: 1px solid white;
-    padding: 5px 10px;
-    border-radius: 20px;
-    width: fit-content;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s ease;
-}
-
-.fullscreen_btn:hover{
-   background: rgb(57, 57, 255);
-}
-
-video{
-    width: 100%;
-    height: 100vh;
-    border: none;
-    position: fixed;
-    display: none;
+    margin: 0;
 }
 
 .startgame_a{
-    width: 100%;
+    width: 90%;
+    margin-left: -130px;
     height: 100vh;
     position: fixed;
-    display: none;
 }
 
 .startgame p{
@@ -108,8 +49,8 @@ video{
 }
 
 .startgame img{
-    width: 710px;
-    margin-top: 17vh;
+    width: 600px;
+    margin-top: 6vh;
 }
 
 

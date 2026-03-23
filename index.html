@@ -5,21 +5,6 @@
    <script src="https://kit.fontawesome.com/e7dfe44f3e.js" crossorigin="anonymous"></script>
 </head>
 <body class="indexpage">
-   <div class="index_main_cnt">
-       <i class="fa-solid fa-volume"></i>
-       <h1>Please make your browser fullscreen, enable sound permission and increase your volume to more than 35% for best experience :D</h1>
-       <br>
-       <button onclick="openvideo()" id="entergame" style="display: none;">Enter game</a>
-   </div>
-   <div class="fullscreen_btn_cnt">
-      <button class="fullscreen_btn" onclick="openFullscreen()">Toggle fullscreen <i class="fa-solid fa-up-right-and-down-left-from-center"></i></button>
-   </div>
-
-   <video id="intro_video" style="display:none;" width="100%">
-  <source src="trailer video/0311.mp4" type="video/mp4">
-  Your browser does not support this video.
-</video>
-
 <a class="startgame_a" id="startgame_a" href="instructions.html">
    <div class="startgame" id="startgame">
    <img src="trailer video/Logo image.png">
@@ -27,49 +12,28 @@
 </div>
 </a>
 
-   <!-- script for fullscreen toggle -->
-  <script>
-function openFullscreen() {
-  const elem = document.documentElement;
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) { 
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { 
-    elem.msRequestFullscreen();
-  }
-}
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCFEB6eJI3dEVbuYjgEhjvl9hotpSnjuxE",
+    authDomain: "prajwals-websites.firebaseapp.com",
+    projectId: "prajwals-websites",
+    storageBucket: "prajwals-websites.firebasestorage.app",
+    messagingSenderId: "925211115074",
+    appId: "1:925211115074:web:dc1829cc2d240ec339f7db",
+    measurementId: "G-EKXRMM6HQC"
+  };
 
-//detect full screen function
-document.addEventListener("fullscreenchange", function () {
-  const btn = document.getElementById("entergame");
-
-  if (document.fullscreenElement) {
-    btn.style.display = "block";  
-  } else {
-    btn.style.display = "none";    
-  }
-});
-
-window.onload = function(){
-  const video = document.getElementById("intro_video");
-  video.pause();
-
-  // detect when video ends
-  video.addEventListener("ended", function () {
-    document.getElementById("startgame_a").style.display = "block";
-  });
-}
-
-function openvideo(){
-  const video = document.getElementById("intro_video");
-
-  video.style.display = "block";
-  video.pause();
-  video.currentTime = 0;
-  video.play();
-}
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
 </script>
 </body>
  </html>
