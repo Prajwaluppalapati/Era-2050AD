@@ -3,7 +3,7 @@
 
 Link for video: https://drive.google.com/file/d/1sk8YUQ-LvEJJOY9sw4A2lXAe4JJsoLyK/view?usp=sharing
 
-Description
+# Description
 
 Era 2050 AD is a futuristic web project that explores how digital experiences and technology might evolve in the year 2050. The website presents an advanced, interactive environment that reflects a world where systems are smarter, faster, and more integrated into daily life.
 
