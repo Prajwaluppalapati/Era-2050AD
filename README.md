@@ -9,39 +9,29 @@ Era 2050 AD is a futuristic web project that explores how digital experiences an
 
 The goal of this project is to combine creativity with technology by building a concept-driven website that feels ahead of its time while solving present-day inefficiencies through futuristic ideas.
 
-How to Try It Out
+# How to Try It Out
 
-You can try the project in the following ways:
-
-Clone the repository
-
-git clone https://github.com/your-username/era-2050-ad.git
-Open the project folder
-Run the index.html file in your browser
-
-Or, if hosted:
-
-Visit the live website: (Add your link here)
-Inspiration
+You can try the project here: https://prajwaluppalapati.github.io/Era-2050AD
 
 The idea for Era 2050 AD came from imagining how technology will shape our future. Today’s websites are functional, but many still lack immersive and innovative experiences.
 
 This project was created to explore what a futuristic interface could look like and how digital platforms might evolve to become more intelligent, interactive, and visually unique.
 
-Technologies Used
-HTML
-CSS
-Custom UI/UX design concepts
-Features
-A futuristic concept-based website experience
-Interactive and structured digital environment
-Problem-solution approach focused on future technology
-Modular layout for easy expansion and feature additions
-Demo
+# Tools used
+- HTML - Used to make the website.
+- CSS - Used for the beautiful UI.
+- JS - used for the functioning and logic.
+- ChatGPT - to produce images and help with JS.
+- Capcut - used to make the trailer video.
+- Grok AI - Used to generate video clips.
 
-To experience the project, simply open the website in your browser or visit the hosted link (if available). The project is designed to be lightweight and accessible without any setup.
+# Features
+- A futuristic concept-based website experience
+- Interactive and structured digital environment
+- Problem-solution approach focused on future technology
+- Modular layout for easy expansion and feature additions
+- Only the Atmosphere control feature has been released; all other features have not been released.
 
-Future Improvements
-Adding animations and transitions
-More interactive components
-Advanced futuristic features and simulations
+# Demo
+
+To experience the project, simply open the website in your browser, and you will understand what to do yourself.
