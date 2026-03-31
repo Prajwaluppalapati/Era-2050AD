@@ -1,4 +1,3 @@
-/* Body - index.html */
 .indexpage{
    background: rgb(0, 1, 21);
    color: white;
@@ -9,7 +8,6 @@
    margin: 0;
 }
 
-/* main container */
 .index_main_cnt{
     width: 100%;
     text-align: center;
@@ -53,8 +51,6 @@
     margin-top: 6vh;
 }
 
-
-/* instructions page */
 .instructionspage{
     background: rgb(0, 0, 0);
     margin: 0;

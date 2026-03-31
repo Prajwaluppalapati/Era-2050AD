@@ -104,7 +104,6 @@
      </div>
    </div>
 
-   <!-- Script for switch and range control -->
     <script>
 const switches = [
   "powerSwitch",
@@ -140,10 +139,8 @@ switches.forEach((id, index) => {
     }
   }
 
-  // Initial state
   updateRange();
 
-  // On change
   sw.addEventListener("change", updateRange);
 });
 
@@ -154,7 +151,7 @@ if (storageSwitch && r4) {
 
   storageSwitch.addEventListener("change", () => {
 
-    if (!storageSwitch.checked) {  // OFF state
+    if (!storageSwitch.checked) { 
       r4.value = 0;
     }
 
@@ -188,24 +185,20 @@ powerSwitch.addEventListener("change", () => {
 });
 </script>
 
-
-<!-- Code for automatic mode and power off mode -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-  // TEXT ELEMENTS
   const waterText = document.getElementById("water_number"); 
   const hydrogenText = document.getElementById("hydrogen_number");
   const oxygenText = document.getElementById("oxygen_number");
 
-  // RANGES
-  const r1 = document.getElementById("r1"); // power
-  const r2 = document.getElementById("r2"); // water
+  const r1 = document.getElementById("r1");
+  const r2 = document.getElementById("r2");
   const r3 = document.getElementById("r3");
   const r4 = document.getElementById("r4");
   const r5 = document.getElementById("r5");
   const r6 = document.getElementById("r6");
-  const r7 = document.getElementById("r7"); // temperature
+  const r7 = document.getElementById("r7");
 
   const ranges = [r1, r2, r3, r4, r5, r6, r7];
 
@@ -215,7 +208,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const powerSwitch = document.getElementById("powerSwitch");
   const autoSwitch = document.getElementById("oxygenSwitch");
 
-  // DEFAULT VALUES (for auto mode)
   const defaultValues = ranges.map(r => r.defaultValue);
 
   // VALUES
@@ -266,18 +258,15 @@ document.addEventListener("DOMContentLoaded", () => {
       ranges.forEach((range, i) => {
         range.value = defaultValues[i];
 
-        // glow effect
         range.style.boxShadow = "0 0 10px rgba(0,255,0,0.8)";
         setTimeout(() => range.style.boxShadow = "", 300);
 
-        // trigger updates
         range.dispatchEvent(new Event("input"));
       });
     }
 
   });
-
-  // disable auto when user moves any slider
+  
   ranges.forEach(range => {
     range.addEventListener("input", () => {
       if (autoSwitch.checked) {

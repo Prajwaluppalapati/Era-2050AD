@@ -1,4 +1,3 @@
-/* Game main page */
 .gamepage{
     background: rgb(9, 18, 28);
     height: 100vh;
@@ -13,8 +12,6 @@
     flex-direction: column;
 }
 
-
-/* game page top part */
 .gamepage_main_cnt_top{
     width: 98%;
     display: flex;
@@ -98,7 +95,6 @@
     padding: 8% 3%;
 }
 
-/* game page bottom part */
 .gamepage_main_cnt_bottom{
    padding: 2% 0%;
    display: grid;
@@ -137,11 +133,6 @@
     color: white;
 }
 
-/* CCTV page */
-/*-----------------------------------------------*/
-
-/* atmosphere control page - atmosphere.html */
-
 .atmospherepage{
     background: rgb(9, 18, 28);
     margin: 0;
@@ -156,7 +147,6 @@
     gap: 25px;
 }
 
-/* Top part */
 .atmosphere_top_cnt{
     border: 2px solid rgba(0, 255, 0, 0.667);
     box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.505);
@@ -206,8 +196,6 @@
     border-radius: 30px;
 }
 
-/* Bottom Part */
-
 .atmosphere_bottom_cnt{
     width: 100%;
     display: grid;
@@ -236,12 +224,6 @@
     color: white;
 }
 
-/* Atmosphere
-   Oxygen control page 
-   atmosphere-oxygen.html
-*/
-
-/* Top part */
 .atmosphere_oxygenpage{
     background: rgb(9, 18, 28);
     margin: 0;
@@ -324,7 +306,6 @@
     width: 50%;
 }
 
-/* Middle part */
 .atmosphere_oxygen_middle{
     margin-top: 10px;
     width: 98%;
@@ -345,7 +326,6 @@
     text-align: center;
 }
 
-/* Slide switch style */
 .switch {
   position: relative;
   display: inline-block;
@@ -396,7 +376,6 @@ input:checked + .slider:before {
   transform: translateX(30px);
 }
 
-/* Style for range */
 .atmosphere_oxygen_bottom{
     width: 98%;
     padding: 1%;
@@ -453,11 +432,6 @@ input:checked + .slider:before {
     box-shadow: none;
     background: gray;
 }
-
-/* Atmosphere
-   Radiation shielding page
-   atmosphere-radiation.html
-*/
 
 .atmosphere_radiationpage{
     background: rgb(9, 18, 28);
@@ -596,7 +570,6 @@ input:checked + .slider:before {
     position: fixed;
     padding: 1%;
 }
-/* battery design */
 
 .radiation_left_top_cnt{
     display: flex;
@@ -674,7 +647,6 @@ input:checked + .slider:before {
     margin-top: 0;
 }
 
-/* radiation right */
 .radiation_right_cnt{
     border: 2px solid rgb(0, 164, 0);
     box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.559);
